@@ -178,7 +178,7 @@ class Cli {
           parseInt(answers.weight),
           parseInt(answers.topSpeed),
           [],
-          parseInt(answers.towCapacity)
+          parseInt(answers.towingCapacity)
         );
         // push the truck to the vehicles array
         this.vehicles.push(truck);
@@ -253,7 +253,7 @@ class Cli {
           parseInt(answers.year),
           parseInt(answers.weight),
           parseInt(answers.topSpeed),
-          []
+          [new Wheel(parseInt(answers.frontWheelDiameter), answers.frontWheelBrand), new Wheel(parseInt(answers.rearWheelDiameter), answers.rearWheelBrand)]
         );
         // push the mortorbike to the vehicles array
         this.vehicles.push(motorbike);
@@ -282,7 +282,7 @@ class Cli {
       ])
       .then((answers) => {
         if (answers.vehicleToTow === truck) {
-          console.log(`${answers.make} ${answers.model} cannot tow itself.`)
+          console.log(`${answers.vehicleToTow.make} ${answers.vehicleToTow.model} cannot tow itself.`)
         } else {
           truck.tow(answers.vehicleToTow);
         }
